@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Quiz UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the frontend of [Quiz Api](https://github.com/jcervelin/quiz-api).
+
 
 ## Available Scripts
 
