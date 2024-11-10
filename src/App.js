@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import Question from './Question';
 
 function App() {
+
+  const [question, setQuestion] = useState("");
+
+  const loadNextQuestion = () => {
+    fetch("http://localhost:8080/next-question")
+      .then(res => res.text())
+      .then(result => setQuestion(result))
+  }
+
+  useEffect(() => {
+    loadNextQuestion()
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="quiz-area">
+        <div id="quiz-content">
+          <Question loadNextQuestion={loadNextQuestion} question={question} />
+        </div>
+      </div>
     </div>
   );
 }
